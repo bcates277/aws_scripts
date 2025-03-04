@@ -1,0 +1,43 @@
+{
+    "Records": [
+        {
+            "eventID": "2fd2f1073b4c721667368b4a10d89050",
+            "eventName": "INSERT",
+            "eventVersion": "1.1",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "ApproximateCreationDateTime": 1741045816.0,
+                "Keys": {
+                    "FindingARN": {
+                        "S": "arn:aws:inspector2:us-east-1:571600842832:finding/45313a1273TESTd50eb65"
+                    }
+                },
+                "NewImage": {
+                    "Status": {
+                        "S": "ACTIVE"
+                    },
+                    "Type": {
+                        "S": "PACKAGE_VULNERABILITY"
+                    },
+                    "FindingARN": {
+                        "S": "arn:aws:inspector2:us-east-1:571600842832:finding/45313a1273TESTd50eb65"
+                    },
+                    "Title": {
+                        "S": "CVE-2017-20162 - ms"
+                    },
+                    "Severity": {
+                        "S": "MEDIUM"
+                    },
+                    "LastUpdated": {
+                        "S": "2025-03-03T19:36:36.712310"
+                    }
+                },
+                "SequenceNumber": "50700000000067098637816",
+                "SizeBytes": 274,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:571600842832:table/InspectorFindings2/stream/2025-03-03T19:51:11.291"
+        }
+    ]
+}

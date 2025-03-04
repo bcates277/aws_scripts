@@ -1,0 +1,18 @@
+curl -X POST -H 'Content-type: application/json' -H 'X-Automation-Webhook-Token: Webhook Token' \
+--data '{
+  "summary": "ECR issue",
+  "title": "User unable to access dashboard",
+  "link": "https://your-site.com/feedback/123",
+  "sentiment": {
+    "emoji": "😡",
+    "label": "Negative"
+  },
+  "reason": {
+    "label": "Bug Report"
+  },
+  "createdAt": "2025-03-03T10:30:00Z",
+  "reporter": "John Doe",
+  "version": "1.1"
+}
+' \
+(WEBHOOK URL)
