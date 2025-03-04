@@ -35,18 +35,28 @@ def store_finding_in_dynamodb(finding):
         finding_status = finding.get("status", "UNKNOWN")
         current_date = datetime.utcnow().isoformat()
 
-        # Store the finding in DynamoDB
-        dynamodb_client.put_item(
-            TableName=table_name,
-            Item={
-                "FindingARN": {"S": finding_arn},
-                "Type": {"S": finding.get("type", "UNKNOWN")},
-                "Severity": {"S": finding.get("severity", "UNKNOWN")},
-                "Title": {"S": finding.get("title", "N/A")},
-                "Status": {"S": finding_status},
-                "LastUpdated": {"S": current_date}
-            }
-        )
-        print(f"Stored finding {finding_arn} in DynamoDB")
+        if finding_status == "CLOSED":
+            # Delete the finding from DynamoDB
+            dynamodb_client.delete_item(
+                TableName=table_name,
+                Key={
+                    "FindingARN": {"S": finding_arn}
+                }
+            )
+            print(f"Deleted finding {finding_arn} from DynamoDB")
+        else:
+            # Store or update the finding in DynamoDB
+            dynamodb_client.put_item(
+                TableName=table_name,
+                Item={
+                    "FindingARN": {"S": finding_arn},
+                    "Type": {"S": finding.get("type", "UNKNOWN")},
+                    "Severity": {"S": finding.get("severity", "UNKNOWN")},
+                    "Title": {"S": finding.get("title", "N/A")},
+                    "Status": {"S": finding_status},
+                    "LastUpdated": {"S": current_date}
+                }
+            )
+            print(f"Stored or updated finding {finding_arn} in DynamoDB")
     except Exception as e:
-        print(f"Error storing finding {finding_arn} in DynamoDB:", str(e))
+        print(f"Error processing finding {finding_arn} in DynamoDB:", str(e))
