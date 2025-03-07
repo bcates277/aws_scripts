@@ -10,7 +10,7 @@
                 "ApproximateCreationDateTime": 1741045816.0,
                 "Keys": {
                     "FindingARN": {
-                        "S": "arn:aws:inspector2:us-east-1:571600842832:finding/45313a1273TESTd50eb65"
+                        "S": "arn:aws:inspector2:us-east-1:*********:finding/45313a1273TESTd50eb65"
                     }
                 },
                 "NewImage": {

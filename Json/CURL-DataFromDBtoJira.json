@@ -1,4 +1,4 @@
-curl -X POST -H 'Content-type: application/json' -H 'X-Automation-Webhook-Token: 6105232f0f2b7947f09fcecc62997619ea85feae' \
+curl -X POST -H 'Content-type: application/json' -H 'X-Automation-Webhook-Token: *****' \
 --data '{
   "summary": "ECR issue3",
   "title": "User unable to access dashboard",
@@ -15,4 +15,4 @@ curl -X POST -H 'Content-type: application/json' -H 'X-Automation-Webhook-Token:
   "version": "1.1"
 }
 ' \
-https://api-private.atlassian.com/automation/webhooks/jira/a/d50e299b-36b7-4e0c-98f0-64788d84d26e/0195674f-419e-760e-b2cd-a95f6b76d93d
+webhook website
