@@ -1,0 +1,58 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ECRPermissions",
+            "Effect": "Allow",
+            "Action": "ecr:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "ECRAuthTokenPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "ecr-public:GetAuthorizationToken",
+                "ecr:GetAuthorizationToken"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "S3Permissions",
+            "Effect": "Allow",
+            "Action": "s3:CreateBucket",
+            "Resource": "*"
+        },
+        {
+            "Sid": "DynamoDBPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+                "dynamodb:PutItem",
+                "dynamodb:GetItem",
+                "dynamodb:ListStreams"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "InspectorPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "inspector:ListFindings",
+                "inspector-scan:ScanSbom",
+                "inspector2:ListFindings"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "IAMPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListGroupPolicies",
+                "iam:ListAttachedUserPolicies",
+                "iam:ListUserPolicies"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

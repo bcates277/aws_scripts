@@ -1,0 +1,85 @@
+AWSLambdaBasicExecutionRole-c514ce2b-0dec-4ec2-acd5-889dd3819835
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:us-east-1:571600842832:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:571600842832:log-group:/aws/lambda/Streams:*"
+            ]
+        }
+    ]
+}
+
+CloudWatchLambdaApplicationSignalsExecutionRolePolicy
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CloudWatchApplicationSignalsXrayWritePermissions",
+            "Effect": "Allow",
+            "Action": [
+                "xray:PutTraceSegments"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                }
+            }
+        },
+        {
+            "Sid": "CloudWatchApplicationSignalsLogGroupWritePermissions",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:*:*:log-group:/aws/application-signals/data:*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceAccount": "${aws:PrincipalAccount}"
+                }
+            }
+        }
+    ]
+}
+
+Secrets and DynamoDB
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "secretsmanager:GetSecretValue",
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:GetShardIterator",
+                "dynamodb:DescribeStream",
+                "dynamodb:ListStreams",
+                "dynamodb:DescribeTable",
+                "dynamodb:GetRecords"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
